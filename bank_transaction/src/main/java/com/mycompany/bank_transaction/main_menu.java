@@ -29,6 +29,7 @@ public class main_menu extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
@@ -46,12 +47,13 @@ public class main_menu extends javax.swing.JFrame {
         jMenu2.setText("Edit");
         jMenuBar1.add(jMenu2);
 
+        jMenuItem4.setText("jMenuItem4");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1366, 768));
 
         jMenu3.setText("File");
 
-        jMenuItem1.setFont(new java.awt.Font("Hack Nerd Font", 1, 18)); // NOI18N
         jMenuItem1.setText("Customer");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -60,7 +62,6 @@ public class main_menu extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItem1);
 
-        jMenuItem2.setFont(new java.awt.Font("Hack Nerd Font", 1, 18)); // NOI18N
         jMenuItem2.setText("Account");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -69,7 +70,6 @@ public class main_menu extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItem2);
 
-        jMenuItem9.setFont(new java.awt.Font("Hack Nerd Font", 1, 18)); // NOI18N
         jMenuItem9.setText("BankCard");
         jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,7 +82,6 @@ public class main_menu extends javax.swing.JFrame {
 
         jMenu4.setText("Transaction");
 
-        jMenuItem3.setFont(new java.awt.Font("Hack Nerd Font", 1, 18)); // NOI18N
         jMenuItem3.setText("Deposit");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,7 +94,6 @@ public class main_menu extends javax.swing.JFrame {
 
         jMenu5.setText("Transfer");
 
-        jMenuItem5.setFont(new java.awt.Font("Hack Nerd Font", 1, 18)); // NOI18N
         jMenuItem5.setText("Account To Account");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -204,6 +202,7 @@ public class main_menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem9;
     // End of variables declaration//GEN-END:variables

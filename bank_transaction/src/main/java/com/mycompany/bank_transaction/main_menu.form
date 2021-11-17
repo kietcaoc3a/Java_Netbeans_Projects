@@ -20,6 +20,11 @@
         </Menu>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JMenuItem" name="jMenuItem4">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jMenuItem4"/>
+      </Properties>
+    </Component>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar2">
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="jMenu3">
@@ -29,9 +34,6 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
               <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Hack Nerd Font" size="18" style="1"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Customer"/>
               </Properties>
               <Events>
@@ -40,9 +42,6 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
               <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Hack Nerd Font" size="18" style="1"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Account"/>
               </Properties>
               <Events>
@@ -51,9 +50,6 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem9">
               <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Hack Nerd Font" size="18" style="1"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="BankCard"/>
               </Properties>
               <Events>
@@ -69,9 +65,6 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
               <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Hack Nerd Font" size="18" style="1"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Deposit"/>
               </Properties>
               <Events>
@@ -87,9 +80,6 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem5">
               <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Hack Nerd Font" size="18" style="1"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Account To Account"/>
               </Properties>
               <Events>
