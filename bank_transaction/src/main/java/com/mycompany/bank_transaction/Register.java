@@ -6,6 +6,9 @@ package com.mycompany.bank_transaction;
 
 import java.awt.Color;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -47,11 +50,16 @@ public class Register extends javax.swing.JFrame {
         
         // create a border for text and password fields.
         Border borderX = BorderFactory.createMatteBorder(1,1,1,1, Color.white);
+        
         fullname.setBorder(borderX);
         password2.setBorder(borderX);
         password1.setBorder(borderX);
         username.setBorder(borderX);
         phone.setBorder(borderX);
+        
+        // create a border for noAcc jlabel
+        Border borderY = BorderFactory.createMatteBorder(0,0,1,0, new Color(35,108,46));
+        hasAcc.setBorder(borderY);
         
         // create a button group
         ButtonGroup bg = new ButtonGroup();
@@ -86,8 +94,9 @@ public class Register extends javax.swing.JFrame {
         female = new javax.swing.JRadioButton();
         jLabel11 = new javax.swing.JLabel();
         selectimage = new javax.swing.JButton();
-        path = new javax.swing.JTextField();
         phone = new javax.swing.JTextField();
+        hasAcc = new javax.swing.JLabel();
+        path = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -104,6 +113,7 @@ public class Register extends javax.swing.JFrame {
         jPanel3.setForeground(new java.awt.Color(22, 34, 56));
 
         fullname.setFont(new java.awt.Font("Hack Nerd Font", 3, 18)); // NOI18N
+        fullname.setForeground(new java.awt.Color(153, 153, 153));
         fullname.setText(".............");
         fullname.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -115,7 +125,8 @@ public class Register extends javax.swing.JFrame {
         });
 
         password2.setFont(new java.awt.Font("Hack Nerd Font", 1, 18)); // NOI18N
-        password2.setText("password");
+        password2.setForeground(new java.awt.Color(153, 153, 153));
+        password2.setText(".............");
         password2.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 password2FocusGained(evt);
@@ -158,6 +169,7 @@ public class Register extends javax.swing.JFrame {
         jLabel7.setText("Full Name");
 
         username.setFont(new java.awt.Font("Hack Nerd Font", 3, 18)); // NOI18N
+        username.setForeground(new java.awt.Color(153, 153, 153));
         username.setText(".............");
         username.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -173,7 +185,8 @@ public class Register extends javax.swing.JFrame {
         jLabel8.setText("Password");
 
         password1.setFont(new java.awt.Font("Hack Nerd Font", 1, 18)); // NOI18N
-        password1.setText("password");
+        password1.setForeground(new java.awt.Color(153, 153, 153));
+        password1.setText(".............");
         password1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 password1FocusGained(evt);
@@ -224,23 +237,8 @@ public class Register extends javax.swing.JFrame {
             }
         });
 
-        path.setFont(new java.awt.Font("Hack Nerd Font", 3, 10)); // NOI18N
-        path.setText("Path");
-        path.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                pathFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                pathFocusLost(evt);
-            }
-        });
-        path.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pathActionPerformed(evt);
-            }
-        });
-
         phone.setFont(new java.awt.Font("Hack Nerd Font", 3, 18)); // NOI18N
+        phone.setForeground(new java.awt.Color(153, 153, 153));
         phone.setText(".............");
         phone.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -255,6 +253,27 @@ public class Register extends javax.swing.JFrame {
                 phoneKeyTyped(evt);
             }
         });
+
+        hasAcc.setFont(new java.awt.Font("Hack Nerd Font", 1, 18)); // NOI18N
+        hasAcc.setForeground(new java.awt.Color(35, 108, 46));
+        hasAcc.setText(">> Already have an account? Login");
+        hasAcc.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        hasAcc.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                hasAccMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                hasAccMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                hasAccMouseExited(evt);
+            }
+        });
+
+        path.setBackground(new java.awt.Color(46, 52, 64));
+        path.setFont(new java.awt.Font("Hack Nerd Font", 3, 10)); // NOI18N
+        path.setForeground(new java.awt.Color(153, 153, 153));
+        path.setText("Path");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -286,10 +305,14 @@ public class Register extends javax.swing.JFrame {
                                 .addComponent(female)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(path, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(selectimage, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(selectimage, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(path, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(79, 79, 79))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(131, 131, 131)
+                .addComponent(hasAcc)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -323,18 +346,16 @@ public class Register extends javax.swing.JFrame {
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(male, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(female, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(path)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(selectimage, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(131, 131, 131)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(selectimage, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(path, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE))
+                .addGap(49, 49, 49)
                 .addComponent(register, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
+                .addGap(18, 18, 18)
+                .addComponent(hasAcc, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
         );
 
         jPanel4.setBackground(new java.awt.Color(30, 59, 238));
@@ -396,8 +417,8 @@ public class Register extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 20, Short.MAX_VALUE))
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -423,14 +444,14 @@ public class Register extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(166, 166, 166)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addContainerGap(101, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(157, 157, 157)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -449,7 +470,7 @@ public class Register extends javax.swing.JFrame {
 
     private void fullnameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fullnameFocusGained
         // clear the text field on focus if the text is "username"
-        if(fullname.getText().trim().toLowerCase().equals("username"));
+        if(fullname.getText().trim().toLowerCase().equals("............."));
         {
             fullname.setText("");
             fullname.setForeground(Color.black);
@@ -465,8 +486,8 @@ public class Register extends javax.swing.JFrame {
 
         // if text field is equal to Username or empty
         // we will set "Username" text to the field on focus lost even.
-        if(fullname.getText().trim().equals("") || fullname.getText().trim().toLowerCase().equals("username")){
-            fullname.setText("username");
+        if(fullname.getText().trim().equals("") || fullname.getText().trim().toLowerCase().equals(".............")){
+            fullname.setText(".............");
             fullname.setForeground(new Color(153,153,153));
         }
 
@@ -478,8 +499,8 @@ public class Register extends javax.swing.JFrame {
         // clear the password field on focus if the text is "Password"
 
         // get the password field text
-        String pass = String.valueOf(password2.getPassword());
-        if(pass.trim().equals("password"));
+        String pass2 = String.valueOf(password2.getPassword());
+        if(pass2.trim().equals("............."));
         {
             password2.setText("");
             password2.setForeground(Color.black);
@@ -496,9 +517,9 @@ public class Register extends javax.swing.JFrame {
         // we will set "Password" text to the field on focus lost even.
 
         // get the password field text.
-        String pass = String.valueOf(password2.getPassword());
-        if(pass.trim().equals("") || pass.trim().equals("password")){
-            password2.setText("password");
+        String pass2 = String.valueOf(password2.getPassword());
+        if(pass2.trim().equals("") || pass2.trim().equals(".............")){
+            password2.setText(".............");
             password2.setForeground(new Color(153,153,153));
         }
 
@@ -535,16 +556,37 @@ public class Register extends javax.swing.JFrame {
                         Class.forName("com.mysql.jdbc.Driver");
                         con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank_transaction?sessionVariables=sql_mode='NO_ENGINE_SUBSTITUTION'&jdbcCompliantTruncation=false","root","hokgadau123");
                         
-                        String query = "insert into users values(?,?,?,?,?,?,?)";
+                        String query = "insert into users(fullname, username, password, phone, gender, picture) values (?,?,?,?,?,?)";
                         st = con.prepareStatement(query);
                         
-                        st.setString(1, );
+                        st.setString(1, full_name);
+                        st.setString(2, user_name);
+                        st.setString(3, pass_word);
+                        st.setString(4, ph);
+                        st.setString(5, gender);
                         
+                        if(imageP != null){
+                            // save image as a blob in the database
+                            InputStream I = new FileInputStream(new File(imageP));
+                            st.setBlob(6, I);
+                        }else st.setNull(6, java.sql.Types.NULL);
+                            
+                        if(st.executeUpdate() != 0){
+                            JOptionPane.showMessageDialog(null, "Your account has been created!!!!");
+                            Login log = new Login();
+                            log.setVisible(true);
+                            log.pack();
+                            log.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                            this.dispose();
+                        }else{
+                            JOptionPane.showMessageDialog(null, "Error: Check your information!!!");
+                        }
                         
-                        rs = st.executeQuery();
                     } catch (ClassNotFoundException ex) {
                         Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (SQLException ex) {
+                        Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (FileNotFoundException ex) {
                         Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
@@ -573,43 +615,85 @@ public class Register extends javax.swing.JFrame {
     }//GEN-LAST:event_exitbuttonMouseExited
 
     private void usernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameFocusGained
-        // TODO add your handling code here:
+        
+        if(username.getText().trim().toLowerCase().equals("............."));
+        {
+            username.setText("");
+            username.setForeground(Color.black);
+        }
+
+        // set a yellow border to jlabel icon
+        Border border1 = BorderFactory.createMatteBorder(1,1,1,1, Color.yellow);
+
+        username.setBorder(border1);
     }//GEN-LAST:event_usernameFocusGained
 
     private void usernameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameFocusLost
-        // TODO add your handling code here:
+        
+        if(username.getText().trim().equals("") || username.getText().trim().toLowerCase().equals(".............")){
+            username.setText(".............");
+            username.setForeground(new Color(153,153,153));
+        }
+
+        // remove the border from the jlabel icon
+        username.setBorder(null);
     }//GEN-LAST:event_usernameFocusLost
 
     private void password1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_password1FocusGained
-        // TODO add your handling code here:
+        
+        String pass1 = String.valueOf(password1.getPassword());
+        if(pass1.trim().equals("............."));
+        {
+            password1.setText("");
+            password1.setForeground(Color.black);
+        }
+
+        // set a yellow border to jlabel icon
+        Border border2 = BorderFactory.createMatteBorder(1,1,1,1, Color.yellow);
+
+        password1.setBorder(border2);
+        
     }//GEN-LAST:event_password1FocusGained
 
     private void password1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_password1FocusLost
-        // TODO add your handling code here:
+        
+        String pass1 = String.valueOf(password1.getPassword());
+        if(pass1.trim().equals("") || pass1.trim().equals(".............")){
+            password1.setText(".............");
+            password1.setForeground(new Color(153,153,153));
+        }
+
+        password1.setBorder(null);
     }//GEN-LAST:event_password1FocusLost
 
     private void password1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_password1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_password1ActionPerformed
 
-    private void pathFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pathFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pathFocusGained
-
-    private void pathFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pathFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pathFocusLost
-
-    private void pathActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pathActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pathActionPerformed
-
     private void phoneFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_phoneFocusGained
-        // TODO add your handling code here:
+        
+        if(phone.getText().trim().toLowerCase().equals("............."));
+        {
+            phone.setText("");
+            phone.setForeground(Color.black);
+        }
+
+        // set a yellow border to jlabel icon
+        Border border1 = BorderFactory.createMatteBorder(1,1,1,1, Color.yellow);
+
+        phone.setBorder(border1);
+        
     }//GEN-LAST:event_phoneFocusGained
 
     private void phoneFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_phoneFocusLost
         // TODO add your handling code here:
+         if(phone.getText().trim().equals("") || phone.getText().trim().toLowerCase().equals(".............")){
+            phone.setText(".............");
+            phone.setForeground(new Color(153,153,153));
+        }
+
+        // remove the border from the jlabel icon
+        phone.setBorder(null);
     }//GEN-LAST:event_phoneFocusLost
 
     private void maleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maleActionPerformed
@@ -647,8 +731,31 @@ public class Register extends javax.swing.JFrame {
             File selectI = chooser.getSelectedFile();
             PATH = selectI.getAbsolutePath();
             path.setText(PATH);
+            
+            imageP = PATH;
         }
     }//GEN-LAST:event_selectimageActionPerformed
+
+    private void hasAccMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hasAccMouseClicked
+        // TODO add your handling code here:
+        Login log = new Login();
+        log.setVisible(true);
+        log.pack();
+        log.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_hasAccMouseClicked
+
+    private void hasAccMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hasAccMouseEntered
+        // TODO add your handling code here:
+        Border borderX = BorderFactory.createMatteBorder(0,0,1,0 , Color.red);
+        hasAcc.setBorder(borderX);
+    }//GEN-LAST:event_hasAccMouseEntered
+
+    private void hasAccMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hasAccMouseExited
+        // TODO add your handling code here:
+        Border borderY = BorderFactory.createMatteBorder(0,0,1,0, Color.gray);
+        hasAcc.setBorder(borderY);
+    }//GEN-LAST:event_hasAccMouseExited
     
     // create a function to verify the empty field.
     public boolean verifyFields(){
@@ -659,7 +766,7 @@ public class Register extends javax.swing.JFrame {
         String ph = phone.getText();
         
         // check empty
-        if(full_name.trim().equals("") || user_name.trim().equals("") || pass_word.trim().equals("") || confirm_pass.trim().equals("") || ph.trim().equals("")){
+        if(full_name.trim().equals(".............") || user_name.trim().equals(".............") || pass_word.trim().equals(".............") || confirm_pass.trim().equals(".............") || ph.trim().equals(".............")){
             JOptionPane.showMessageDialog(null, "One or more fields are empty!!!!", "Empty fields!!", 2);
             return false;
         }
@@ -743,6 +850,7 @@ public class Register extends javax.swing.JFrame {
     private javax.swing.JLabel exitbutton;
     private javax.swing.JRadioButton female;
     private javax.swing.JTextField fullname;
+    private javax.swing.JLabel hasAcc;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -759,7 +867,7 @@ public class Register extends javax.swing.JFrame {
     private javax.swing.JRadioButton male;
     private javax.swing.JPasswordField password1;
     private javax.swing.JPasswordField password2;
-    private javax.swing.JTextField path;
+    private javax.swing.JLabel path;
     private javax.swing.JTextField phone;
     private javax.swing.JButton register;
     private javax.swing.JButton selectimage;

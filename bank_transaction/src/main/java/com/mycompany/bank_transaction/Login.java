@@ -36,7 +36,9 @@ public class Login extends javax.swing.JFrame {
         username.setBorder(borderX);
         password.setBorder(borderX);
         
-        
+        // create a border for noAcc jlabel
+        Border borderY = BorderFactory.createMatteBorder(0,0,1,0, Color.lightGray);
+        noAcc.setBorder(borderY);
     }
 
     /**
@@ -58,6 +60,7 @@ public class Login extends javax.swing.JFrame {
         username = new javax.swing.JTextField();
         password = new javax.swing.JPasswordField();
         login = new javax.swing.JButton();
+        noAcc = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         exitbutton = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
@@ -125,7 +128,8 @@ public class Login extends javax.swing.JFrame {
         );
 
         username.setFont(new java.awt.Font("Hack Nerd Font", 3, 18)); // NOI18N
-        username.setText("username");
+        username.setForeground(new java.awt.Color(153, 153, 153));
+        username.setText("........");
         username.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 usernameFocusGained(evt);
@@ -136,6 +140,7 @@ public class Login extends javax.swing.JFrame {
         });
 
         password.setFont(new java.awt.Font("Hack Nerd Font", 1, 18)); // NOI18N
+        password.setForeground(new java.awt.Color(153, 153, 153));
         password.setText("password");
         password.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -166,11 +171,27 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        noAcc.setFont(new java.awt.Font("Hack Nerd Font", 1, 18)); // NOI18N
+        noAcc.setForeground(new java.awt.Color(211, 11, 69));
+        noAcc.setText(">> No Account? Create one");
+        noAcc.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        noAcc.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                noAccMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                noAccMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                noAccMouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(login, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -183,6 +204,10 @@ public class Login extends javax.swing.JFrame {
                             .addComponent(username)
                             .addComponent(password, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE))))
                 .addGap(79, 79, 79))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(179, 179, 179)
+                .addComponent(noAcc)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -197,7 +222,9 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(38, 38, 38)
                 .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(noAcc, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         exitbutton.setFont(new java.awt.Font("Hack Nerd Font", 1, 18)); // NOI18N
@@ -307,7 +334,7 @@ public class Login extends javax.swing.JFrame {
 
     private void usernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameFocusGained
         // clear the text field on focus if the text is "username"
-        if(username.getText().trim().toLowerCase().equals("username"));
+        if(username.getText().trim().toLowerCase().equals("........"));
         {
             username.setText("");
             username.setForeground(Color.black);
@@ -324,8 +351,8 @@ public class Login extends javax.swing.JFrame {
 
         // if text field is equal to Username or empty
         // we will set "Username" text to the field on focus lost even.
-        if(username.getText().trim().equals("") || username.getText().trim().toLowerCase().equals("username")){
-            username.setText("username");
+        if(username.getText().trim().equals("") || username.getText().trim().toLowerCase().equals("........")){
+            username.setText("........");
             username.setForeground(new Color(153,153,153));
         }
 
@@ -334,11 +361,10 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_usernameFocusLost
 
     private void passwordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFocusGained
-        // clear the password field on focus if the text is "Password"
 
         // get the password field text
         String pass = String.valueOf(password.getPassword());
-        if(pass.trim().equals("password"));
+        if(pass.trim().equals("........"));
         {
             password.setText("");
             password.setForeground(Color.black);
@@ -356,8 +382,8 @@ public class Login extends javax.swing.JFrame {
 
         // get the password field text.
         String pass = String.valueOf(password.getPassword());
-        if(pass.trim().equals("") || pass.trim().equals("password")){
-            password.setText("password");
+        if(pass.trim().equals("") || pass.trim().equals("........")){
+            password.setText("........");
             password.setForeground(new Color(153,153,153));
         }
 
@@ -376,47 +402,59 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_loginMouseExited
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
-        try {
-            // TODO add your handling code here:
-            PreparedStatement st;
-            Connection con;
-            ResultSet rs;
-
-            // get username and password
+        
+        // get username and password
             String user_name = username.getText();
             String pass_word = String.valueOf(password.getPassword());
-
-            Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank_transaction?sessionVariables=sql_mode='NO_ENGINE_SUBSTITUTION'&jdbcCompliantTruncation=false","root","hokgadau123");
-
-            // create a select query to check if username and password exist in database.
-            String query = "SELECT * FROM users WHERE username = ? and password = ?";
-            st = con.prepareStatement(query);
-
-            st.setString(1, user_name);
-            st.setString(2, pass_word);
-
-            rs = st.executeQuery();
-
-            if(rs.next() == true){
-                // show a new form
-                main_menu mn = new main_menu();
-                mn.setVisible(true);
-                mn.pack();
-                mn.setLocationRelativeTo(null);
-                
-                // close the current form (login form)
-                this.dispose();
+            
+            if(user_name.trim().equals("........")){
+                JOptionPane.showMessageDialog(null, "Please enter your Username!!!", "Empty Username", 2);
+            }
+            else if(pass_word.trim().equals("........")){
+                JOptionPane.showMessageDialog(null, "Please enter your Password!!!", "Empty Password", 2);
             }
             else{
-                JOptionPane.showMessageDialog(null, "Invalid Username / Password", "Login Error", 2);
-            }
+                try {
+                    // TODO add your handling code here:
+                    PreparedStatement st;
+                    Connection con;
+                    ResultSet rs;
 
-        } catch (SQLException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
+
+                    Class.forName("com.mysql.jdbc.Driver");
+                    con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank_transaction?sessionVariables=sql_mode='NO_ENGINE_SUBSTITUTION'&jdbcCompliantTruncation=false","root","hokgadau123");
+
+                    // create a select query to check if username and password exist in database.
+                    String query = "SELECT * FROM users WHERE username = ? and password = ?";
+                    st = con.prepareStatement(query);
+
+                    st.setString(1, user_name);
+                    st.setString(2, pass_word);
+
+                    rs = st.executeQuery();
+
+                    if(rs.next() == true){
+                        // show a new form
+                        main_menu mn = new main_menu();
+                        mn.setVisible(true);
+                        mn.pack();
+                        mn.setLocationRelativeTo(null);
+
+                        // close the current form (login form)
+                        this.dispose();
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(null, "Invalid Username / Password", "Login Error", 2);
+                    }
+
+                } catch (SQLException ex) {
+                    Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        
     }//GEN-LAST:event_loginActionPerformed
 
     private void exitbuttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitbuttonMouseClicked
@@ -438,6 +476,27 @@ public class Login extends javax.swing.JFrame {
         exitbutton.setBorder(border);
         exitbutton.setForeground(Color.black);
     }//GEN-LAST:event_exitbuttonMouseExited
+
+    private void noAccMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_noAccMouseEntered
+        // TODO add your handling code here:
+        Border borderX = BorderFactory.createMatteBorder(0,0,1,0 , Color.red);
+        noAcc.setBorder(borderX);
+    }//GEN-LAST:event_noAccMouseEntered
+
+    private void noAccMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_noAccMouseExited
+        // TODO add your handling code here:
+        Border borderY = BorderFactory.createMatteBorder(0,0,1,0, Color.gray);
+        noAcc.setBorder(borderY);
+    }//GEN-LAST:event_noAccMouseExited
+
+    private void noAccMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_noAccMouseClicked
+        // TODO add your handling code here:
+        Register re = new Register();
+        re.setVisible(true);
+        re.pack();
+        re.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_noAccMouseClicked
     
     
     
@@ -493,6 +552,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JButton login;
+    private javax.swing.JLabel noAcc;
     private javax.swing.JPasswordField password;
     private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables
