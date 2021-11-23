@@ -27,9 +27,12 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        // center
+        this.setLocationRelativeTo(null);
         
         Border border = BorderFactory.createMatteBorder(1,1,1,1, Color.black);
         exitbutton.setBorder(border);
+        minimize.setBorder(border);
         
         // create a border with the color of the parent jpanel for the icon label to remove the move.
         Border borderX = BorderFactory.createMatteBorder(1,1,1,1, new Color(153,153,153));
@@ -61,12 +64,16 @@ public class Login extends javax.swing.JFrame {
         password = new javax.swing.JPasswordField();
         login = new javax.swing.JButton();
         noAcc = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         exitbutton = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
+        minimize = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel2.setBackground(new java.awt.Color(104, 89, 137));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 12), new java.awt.Color(94, 92, 20))); // NOI18N
@@ -98,7 +105,7 @@ public class Login extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -123,7 +130,7 @@ public class Login extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -187,12 +194,26 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        jLabel6.setFont(new java.awt.Font("Hack Nerd Font", 1, 48)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(37, 47, 66));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("");
+
+        jLabel7.setFont(new java.awt.Font("Hack Nerd Font", 1, 48)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(37, 47, 66));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(login, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -207,7 +228,7 @@ public class Login extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(179, 179, 179)
                 .addComponent(noAcc)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(173, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -215,11 +236,13 @@ public class Login extends javax.swing.JFrame {
                 .addGap(40, 40, 40)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(username)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(35, 35, 35)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(password)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(38, 38, 38)
                 .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -227,9 +250,10 @@ public class Login extends javax.swing.JFrame {
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
-        exitbutton.setFont(new java.awt.Font("Hack Nerd Font", 1, 18)); // NOI18N
+        exitbutton.setFont(new java.awt.Font("Hack Nerd Font", 1, 24)); // NOI18N
         exitbutton.setForeground(new java.awt.Color(24, 30, 40));
-        exitbutton.setText(" X");
+        exitbutton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        exitbutton.setText("X");
         exitbutton.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 12), new java.awt.Color(35, 41, 52))); // NOI18N
         exitbutton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         exitbutton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -268,19 +292,36 @@ public class Login extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        minimize.setFont(new java.awt.Font("Hack Nerd Font", 1, 24)); // NOI18N
+        minimize.setForeground(new java.awt.Color(18, 26, 42));
+        minimize.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        minimize.setText("-");
+        minimize.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 12), new java.awt.Color(22, 28, 39))); // NOI18N
+        minimize.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                minimizeMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                minimizeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                minimizeMouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(214, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(114, 114, 114)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addComponent(exitbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+                    .addComponent(minimize, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(12, 12, 12)
+                .addComponent(exitbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(17, 17, 17))
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -290,11 +331,13 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(exitbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(34, 34, 34)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(exitbutton, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                            .addComponent(minimize, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(31, 31, 31)
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -304,25 +347,23 @@ public class Login extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(166, 166, 166)
+                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(192, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(162, 162, 162)
+                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(175, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -332,33 +373,125 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void usernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameFocusGained
-        // clear the text field on focus if the text is "username"
-        if(username.getText().trim().toLowerCase().equals("........"));
-        {
-            username.setText("");
-            username.setForeground(Color.black);
+    private void exitbuttonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitbuttonMouseExited
+        // TODO add your handling code here:
+        Border border = BorderFactory.createMatteBorder(1,1,1,1, Color.black);
+        exitbutton.setBorder(border);
+        exitbutton.setForeground(Color.black);
+    }//GEN-LAST:event_exitbuttonMouseExited
+
+    private void exitbuttonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitbuttonMouseEntered
+        // TODO add your handling code here:
+        Border border = BorderFactory.createMatteBorder(1,1,1,1, Color.white);
+        exitbutton.setBorder(border);
+        exitbutton.setForeground(Color.white);
+    }//GEN-LAST:event_exitbuttonMouseEntered
+
+    private void exitbuttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitbuttonMouseClicked
+        // TODO add your handling code here:
+        setVisible(false);
+        dispose();
+    }//GEN-LAST:event_exitbuttonMouseClicked
+
+    private void noAccMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_noAccMouseExited
+        // TODO add your handling code here:
+        Border borderY = BorderFactory.createMatteBorder(0,0,1,0, Color.gray);
+        noAcc.setBorder(borderY);
+    }//GEN-LAST:event_noAccMouseExited
+
+    private void noAccMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_noAccMouseEntered
+        // TODO add your handling code here:
+        Border borderX = BorderFactory.createMatteBorder(0,0,1,0 , Color.red);
+        noAcc.setBorder(borderX);
+    }//GEN-LAST:event_noAccMouseEntered
+
+    private void noAccMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_noAccMouseClicked
+        // TODO add your handling code here:
+        Register re = new Register();
+        re.setVisible(true);
+        re.pack();
+        re.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_noAccMouseClicked
+
+    private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
+
+        // get username and password
+        String user_name = username.getText();
+        String pass_word = String.valueOf(password.getPassword());
+
+        if(user_name.trim().equals("........")){
+            JOptionPane.showMessageDialog(null, "Please enter your Username!!!", "Empty Username", 2);
+        }
+        else if(pass_word.trim().equals("........")){
+            JOptionPane.showMessageDialog(null, "Please enter your Password!!!", "Empty Password", 2);
+        }
+        else{
+            try {
+                // TODO add your handling code here:
+                PreparedStatement st;
+                Connection con;
+                ResultSet rs;
+
+                Class.forName("com.mysql.jdbc.Driver");
+                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank_transaction?sessionVariables=sql_mode='NO_ENGINE_SUBSTITUTION'&jdbcCompliantTruncation=false","root","hokgadau123");
+
+                // create a select query to check if username and password exist in database.
+                String query = "SELECT * FROM users WHERE username = ? and password = ?";
+                st = con.prepareStatement(query);
+
+                st.setString(1, user_name);
+                st.setString(2, pass_word);
+
+                rs = st.executeQuery();
+
+                if(rs.next() == true){
+                    // show a new form
+                    main_menu mn = new main_menu();
+                    mn.setVisible(true);
+                    mn.pack();
+                    mn.setLocationRelativeTo(null);
+
+                    // close the current form (login form)
+                    this.dispose();
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Invalid Username / Password", "Login Error", 2);
+                }
+
+            } catch (SQLException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
 
-        // set a yellow border to jlabel icon
-        Border border1 = BorderFactory.createMatteBorder(1,1,1,1, Color.yellow);
+    }//GEN-LAST:event_loginActionPerformed
 
-        username.setBorder(border1);
+    private void loginMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginMouseExited
+        // set login button background
+        login.setBackground(new Color(0, 84, 104));
+    }//GEN-LAST:event_loginMouseExited
 
-    }//GEN-LAST:event_usernameFocusGained
+    private void loginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginMouseEntered
+        // set login button background
+        login.setBackground(new Color(0, 101, 183));
+    }//GEN-LAST:event_loginMouseEntered
 
-    private void usernameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameFocusLost
+    private void passwordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFocusLost
+        // if text field is equal to "password" or empty
+        // we will set "Password" text to the field on focus lost even.
 
-        // if text field is equal to Username or empty
-        // we will set "Username" text to the field on focus lost even.
-        if(username.getText().trim().equals("") || username.getText().trim().toLowerCase().equals("........")){
-            username.setText("........");
-            username.setForeground(new Color(153,153,153));
+        // get the password field text.
+        String pass = String.valueOf(password.getPassword());
+        if(pass.trim().equals("") || pass.trim().equals("........")){
+            password.setText("........");
+            password.setForeground(new Color(153,153,153));
         }
 
         // remove the border from the jlabel icon
-        username.setBorder(null);
-    }//GEN-LAST:event_usernameFocusLost
+        password.setBorder(null);
+    }//GEN-LAST:event_passwordFocusLost
 
     private void passwordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFocusGained
 
@@ -376,127 +509,51 @@ public class Login extends javax.swing.JFrame {
         password.setBorder(border2);
     }//GEN-LAST:event_passwordFocusGained
 
-    private void passwordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFocusLost
-        // if text field is equal to "password" or empty
-        // we will set "Password" text to the field on focus lost even.
+    private void usernameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameFocusLost
 
-        // get the password field text.
-        String pass = String.valueOf(password.getPassword());
-        if(pass.trim().equals("") || pass.trim().equals("........")){
-            password.setText("........");
-            password.setForeground(new Color(153,153,153));
+        // if text field is equal to Username or empty
+        // we will set "Username" text to the field on focus lost even.
+        if(username.getText().trim().equals("") || username.getText().trim().toLowerCase().equals("........")){
+            username.setText("........");
+            username.setForeground(new Color(153,153,153));
         }
 
         // remove the border from the jlabel icon
-        password.setBorder(null);
-    }//GEN-LAST:event_passwordFocusLost
+        username.setBorder(null);
+    }//GEN-LAST:event_usernameFocusLost
 
-    private void loginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginMouseEntered
-        // set login button background
-        login.setBackground(new Color(0, 101, 183));
-    }//GEN-LAST:event_loginMouseEntered
+    private void usernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameFocusGained
+        // clear the text field on focus if the text is "username"
+        if(username.getText().trim().toLowerCase().equals("........"));
+        {
+            username.setText("");
+            username.setForeground(Color.black);
+        }
 
-    private void loginMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginMouseExited
-        // set login button background
-        login.setBackground(new Color(0, 84, 104));
-    }//GEN-LAST:event_loginMouseExited
+        // set a yellow border to jlabel icon
+        Border border1 = BorderFactory.createMatteBorder(1,1,1,1, Color.yellow);
 
-    private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
-        
-        // get username and password
-            String user_name = username.getText();
-            String pass_word = String.valueOf(password.getPassword());
-            
-            if(user_name.trim().equals("........")){
-                JOptionPane.showMessageDialog(null, "Please enter your Username!!!", "Empty Username", 2);
-            }
-            else if(pass_word.trim().equals("........")){
-                JOptionPane.showMessageDialog(null, "Please enter your Password!!!", "Empty Password", 2);
-            }
-            else{
-                try {
-                    // TODO add your handling code here:
-                    PreparedStatement st;
-                    Connection con;
-                    ResultSet rs;
+        username.setBorder(border1);
+    }//GEN-LAST:event_usernameFocusGained
 
-
-
-                    Class.forName("com.mysql.jdbc.Driver");
-                    con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank_transaction?sessionVariables=sql_mode='NO_ENGINE_SUBSTITUTION'&jdbcCompliantTruncation=false","root","hokgadau123");
-
-                    // create a select query to check if username and password exist in database.
-                    String query = "SELECT * FROM users WHERE username = ? and password = ?";
-                    st = con.prepareStatement(query);
-
-                    st.setString(1, user_name);
-                    st.setString(2, pass_word);
-
-                    rs = st.executeQuery();
-
-                    if(rs.next() == true){
-                        // show a new form
-                        main_menu mn = new main_menu();
-                        mn.setVisible(true);
-                        mn.pack();
-                        mn.setLocationRelativeTo(null);
-
-                        // close the current form (login form)
-                        this.dispose();
-                    }
-                    else{
-                        JOptionPane.showMessageDialog(null, "Invalid Username / Password", "Login Error", 2);
-                    }
-
-                } catch (SQLException ex) {
-                    Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        
-    }//GEN-LAST:event_loginActionPerformed
-
-    private void exitbuttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitbuttonMouseClicked
+    private void minimizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizeMouseClicked
         // TODO add your handling code here:
-        setVisible(false);
-        dispose();
-    }//GEN-LAST:event_exitbuttonMouseClicked
+        this.setState(JFrame.ICONIFIED);
+    }//GEN-LAST:event_minimizeMouseClicked
 
-    private void exitbuttonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitbuttonMouseEntered
+    private void minimizeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizeMouseEntered
         // TODO add your handling code here:
         Border border = BorderFactory.createMatteBorder(1,1,1,1, Color.white);
-        exitbutton.setBorder(border);
-        exitbutton.setForeground(Color.white);
-    }//GEN-LAST:event_exitbuttonMouseEntered
+        minimize.setBorder(border);
+        minimize.setForeground(Color.white);
+    }//GEN-LAST:event_minimizeMouseEntered
 
-    private void exitbuttonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitbuttonMouseExited
+    private void minimizeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizeMouseExited
         // TODO add your handling code here:
         Border border = BorderFactory.createMatteBorder(1,1,1,1, Color.black);
-        exitbutton.setBorder(border);
-        exitbutton.setForeground(Color.black);
-    }//GEN-LAST:event_exitbuttonMouseExited
-
-    private void noAccMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_noAccMouseEntered
-        // TODO add your handling code here:
-        Border borderX = BorderFactory.createMatteBorder(0,0,1,0 , Color.red);
-        noAcc.setBorder(borderX);
-    }//GEN-LAST:event_noAccMouseEntered
-
-    private void noAccMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_noAccMouseExited
-        // TODO add your handling code here:
-        Border borderY = BorderFactory.createMatteBorder(0,0,1,0, Color.gray);
-        noAcc.setBorder(borderY);
-    }//GEN-LAST:event_noAccMouseExited
-
-    private void noAccMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_noAccMouseClicked
-        // TODO add your handling code here:
-        Register re = new Register();
-        re.setVisible(true);
-        re.pack();
-        re.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.dispose();
-    }//GEN-LAST:event_noAccMouseClicked
+        minimize.setBorder(border);
+        minimize.setForeground(Color.black);
+    }//GEN-LAST:event_minimizeMouseExited
     
     
     
@@ -545,6 +602,8 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -552,6 +611,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JButton login;
+    private javax.swing.JLabel minimize;
     private javax.swing.JLabel noAcc;
     private javax.swing.JPasswordField password;
     private javax.swing.JTextField username;
