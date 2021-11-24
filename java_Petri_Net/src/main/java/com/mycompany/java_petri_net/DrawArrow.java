@@ -40,11 +40,11 @@ public class DrawArrow {
             line2D = new Line2D.Double(120, 100, 300, 300);
             draw(g2d, line2D);
 
-            line2D = new Line2D.Double(110, 330, 300, 330);
-            draw(g2d, line2D);
-
-            line2D = new Line2D.Double(400, 200, 260, 200);
-            draw(g2d, line2D);
+//            line2D = new Line2D.Double(110, 330, 300, 330);
+//            draw(g2d, line2D);
+//
+//            line2D = new Line2D.Double(400, 200, 260, 200);
+//            draw(g2d, line2D);
         }
 
         private void draw(Graphics2D g2d, Line2D.Double line2D) {
