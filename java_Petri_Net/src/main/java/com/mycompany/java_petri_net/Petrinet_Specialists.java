@@ -31,6 +31,8 @@ public class Petrinet_Specialists extends javax.swing.JFrame {
         end.setBorder(border);
         start.setBorder(border);
         
+//        toggle.setBackground(Color.red);
+        
     }
     
     // global variable
@@ -313,7 +315,7 @@ public class Petrinet_Specialists extends javax.swing.JFrame {
             }
         });
 
-        stop.setText("Stop fire");
+        stop.setText("Clear");
         stop.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stopActionPerformed(evt);
@@ -406,11 +408,6 @@ public class Petrinet_Specialists extends javax.swing.JFrame {
                         .addGap(25, 25, 25)
                         .addComponent(stop, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(marking, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -418,6 +415,11 @@ public class Petrinet_Specialists extends javax.swing.JFrame {
                     .addComponent(jLabel14)
                     .addComponent(doneplace, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(65, 65, 65))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(marking, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(24, 24, 24)
@@ -571,7 +573,7 @@ public class Petrinet_Specialists extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(56, 56, 56)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(188, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -702,7 +704,13 @@ public class Petrinet_Specialists extends javax.swing.JFrame {
     }//GEN-LAST:event_wait_textActionPerformed
 
     private void setTokenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setTokenActionPerformed
-        toggle.setText("ON");
+        if(toggle.getText().equals("OFF")) toggle.doClick();
+        if(t != null){
+            t.cancel(true);
+            t = null;
+        }
+        
+        
         if(wait_text.getText().equals("")) Wait = 0;
         else Wait = Integer.parseInt(wait_text.getText());
         
@@ -776,7 +784,21 @@ public class Petrinet_Specialists extends javax.swing.JFrame {
     }//GEN-LAST:event_docu_textKeyTyped
 
     private void stopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stopActionPerformed
-        // TODO add your handling code here:
+       
+        docu.setText("0");
+        free.setText("0");
+        wait.setText("0");
+        inside.setText("0");
+        busy.setText("0");
+        done.setText("0");
+        
+        docu_text.setText(String.valueOf(Docu));
+        free_text.setText(String.valueOf(Free));
+        wait_text.setText(String.valueOf(Wait));
+        inside_text.setText(String.valueOf(Inside));
+        busy_text.setText(String.valueOf(Busy));
+        done_text.setText(String.valueOf(Done));
+        
         if(t != null){
             t.cancel(true);
             t = null;
@@ -797,10 +819,12 @@ public class Petrinet_Specialists extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(toggle.isSelected()){
             toggle.setText("OFF");
-            
+//            toggle.setBackground(Color.red);
             (t = new Task_For_Threading()).execute();
         }else  {
             toggle.setText("ON");
+//            toggle.setBackground(Color.yellow);
+            
             if(t != null){
             t.cancel(true);
             t = null;
@@ -900,6 +924,8 @@ public class Petrinet_Specialists extends javax.swing.JFrame {
     private javax.swing.JLabel waitplace;
     // End of variables declaration//GEN-END:variables
     private Task_For_Threading t;
+    
+    
     private class Task_For_Threading extends SwingWorker<Void, String>{
         @Override
         protected Void doInBackground() throws InterruptedException{
